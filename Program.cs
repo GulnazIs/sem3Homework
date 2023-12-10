@@ -17,4 +17,4 @@ for(int i = 0; i < array.Length; i++)
         count++;
     }
 }
-Console.Write(count);
+Console.Write("Количество чётных чисел в массиве: "+count);
