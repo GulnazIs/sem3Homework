@@ -1,31 +1,23 @@
-﻿//Задача 3: Задайте массив из вещественных чисел с ненулевой дробной частью. Найдите разницу между максимальным и минимальным элементов массива.
+﻿//Задача 4**(не обязательно): Дано натуральное число в диапазоне от 1 до 100 000. Создайте массив, состоящий из цифр этого числа.
+//Старший разряд числа должен располагаться на 0-м индексе массива, младший – на последнем. Размер массива должен быть равен количеству цифр.
 
-Console.WriteLine("Введите размер массива");
-int count = Convert.ToInt32(Console.ReadLine());
-double [] array = new double[count];
-Console.WriteLine("Введите минимальное значение диапазона");
-int num1 = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите максимальное значение диапазона");
-int num2 = Convert.ToInt32(Console.ReadLine());
-Random r = new Random();
+Console.WriteLine("Введите число от 1 до 100 000");
+int num = Convert.ToInt32(Console.ReadLine());
+int num2 = num;
+int n = 1;
+int count = 1;
 
-for (int i = 0; i < array.Length; i++) 
-{
-    array[i] = r.NextDouble() * (num2 - num1) + num1;   
-    Console.Write("{0:0.0000}   ", array[i]);        
-}
-double max = array [0];
-double min = array [0];
-for (int i = 0; i < array.Length; i++)
-{
-    if (array [i] > max)
+while (num2 >= 10)
     {
-        max = array [i];
+        num2 /= 10;
+        n *= 10;
+        count++;
     }
-    if (array [i] < min)
-    {
-        min = array [i];
-    }         
+int[] array = new int[count];
+for (int i = 0; i < count; i++)
+{
+    array[i] = num / n % 10;
+    n /= 10;
+    Console.Write(array[i]+ " ");
 }
-Console.WriteLine();
-Console.Write("Разница между максимальным и минимальным элементами массива: "+"{0:0.0000}", max - min);
+
