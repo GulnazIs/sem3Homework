@@ -1,20 +1,31 @@
-﻿//Задача 2: Задайте массив на 10 целых чисел. Напишите программу, которая определяет количество чётных чисел в массиве.
+﻿//Задача 3: Задайте массив из вещественных чисел с ненулевой дробной частью. Найдите разницу между максимальным и минимальным элементов массива.
 
-int [] array = new int [10];
-int count = 0;
+Console.WriteLine("Введите размер массива");
+int count = Convert.ToInt32(Console.ReadLine());
+double [] array = new double[count];
+Console.WriteLine("Введите минимальное значение диапазона");
+int num1 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите максимальное значение диапазона");
+int num2 = Convert.ToInt32(Console.ReadLine());
+Random r = new Random();
 
-for(int i = 0; i < array.Length; i++)
+for (int i = 0; i < array.Length; i++) 
 {
-    array[i] = new Random().Next(0,1001);
-    Console.Write(array[i]+" ");
+    array[i] = r.NextDouble() * (num2 - num1) + num1;   
+    Console.Write("{0:0.0000}   ", array[i]);        
+}
+double max = array [0];
+double min = array [0];
+for (int i = 0; i < array.Length; i++)
+{
+    if (array [i] > max)
+    {
+        max = array [i];
+    }
+    if (array [i] < min)
+    {
+        min = array [i];
+    }         
 }
 Console.WriteLine();
-
-for(int i = 0; i < array.Length; i++)
-{
-    if(array[i] % 2 == 0)
-    {
-        count++;
-    }
-}
-Console.Write("Количество чётных чисел в массиве: "+count);
+Console.Write("Разница между максимальным и минимальным элементами массива: "+"{0:0.0000}", max - min);
